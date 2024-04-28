@@ -52,7 +52,7 @@ ANPCInteractive* AUnitCharacter::OverlapForInteractableNPCs()
 	QueryParams.AddIgnoredActor(this);
 
 	const bool bOverlapResulst = GetWorld()->OverlapMultiByObjectType(TempArr, GetActorLocation(), GetActorRotation().Quaternion(),
-		ObjectQP, FCollisionShape::MakeSphere(200), QueryParams);
+		ObjectQP, FCollisionShape::MakeSphere(300), QueryParams);
 
 	if (bOverlapResulst)
 	{
