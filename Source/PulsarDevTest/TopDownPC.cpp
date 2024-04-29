@@ -154,11 +154,7 @@ void ATopDownPC::OpenMapFn()
 
 void ATopDownPC::SelectUnits()
 {
-	UE_LOG(LogTemp, Warning, TEXT("TRYING TO SELECT UNITS"));
-
-
-
-	SelectionArea->SetWorldLocation(CenterMouseLoc);
+		SelectionArea->SetWorldLocation(CenterMouseLoc);
 	SelectionArea->SetBoxExtent(SelectionSize);
 
 	TArray<AActor*>TBSActors;
@@ -184,7 +180,6 @@ void ATopDownPC::SelectUnits()
 
 void ATopDownPC::MoveUnits(FVector Loc)
 {
-	UE_LOG(LogTemp, Warning, TEXT("MOUSE TRIGGERING"));
 
 	if (SelectedUnits.Num() > 0 && !IsInteracting() && !bInMapMode)
 	{
@@ -213,7 +208,6 @@ void ATopDownPC::MoveUnits(FVector Loc)
 
 void ATopDownPC::OnUnitMoveFinished(FAIRequestID RequestID, const FPathFollowingResult& Result)
 {
-	UE_LOG(LogTemp, Log, TEXT("OnMoveFinished function called!"));
 	for (AActor* TempActor : SelectedUnits)
 	{
 		if (TempActor->IsA(AUnitCharacter::StaticClass()))
@@ -227,8 +221,6 @@ void ATopDownPC::OnUnitMoveFinished(FAIRequestID RequestID, const FPathFollowing
 				FMoveFinishedDelegateData* UsedFinishedData = UnitMoveDelegates.Find(TempActor);
 				if (UsedFinishedData && RequestID.GetID() == UsedFinishedData->UsedRequestID)
 				{
-					UE_LOG(LogTemp, Log, TEXT("Request IDs equal!!!"));
-
 					ANPCInteractive* InteractableNPC = UnitChar->OverlapForInteractableNPCs();
 					if (IsValid(InteractableNPC))
 					{

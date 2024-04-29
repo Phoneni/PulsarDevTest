@@ -10,14 +10,7 @@
 class AUnitCharacter;
 class UBoxComponent;
 
-UENUM(BlueprintType)
-enum class EActionType : uint8 
-{
-	Move,
-	Talk,
-	MapOpen,
-	End
-};
+
 
 UCLASS()
 class PULSARDEVTEST_API ABaseAI : public AAIController
@@ -31,11 +24,7 @@ protected:
 	virtual void Tick(float DeltaTime) override;
 
 public:
-	void TalkAction();
 	AUnitCharacter* GetUnitCharacter();
-	void SetTargetActor(AActor* InActor);
-	AActor* GetTargetActor() const { return TargetActor; }
-
 	bool bCanPerformAct;
 	void CanPerformAct();
 
@@ -43,8 +32,7 @@ public:
 	virtual void OnPossess(APawn* InPawn) override;
 
 private:
-	AActor* PrevTarget;
-	AActor* TargetActor;
+
 	UBoxComponent* SelectionArea;
 
 	FVector Location;
@@ -54,6 +42,5 @@ private:
 	FVector CharacterExtent;
 
 	AUnitCharacter* UnitCharacter;
-	EActionType CurrAction;
 
 };

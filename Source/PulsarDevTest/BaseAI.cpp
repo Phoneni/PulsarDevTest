@@ -16,10 +16,6 @@ void ABaseAI::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void ABaseAI::TalkAction()
-{
-	//TODO
-}
 
 AUnitCharacter* ABaseAI::GetUnitCharacter()
 {
@@ -30,11 +26,6 @@ AUnitCharacter* ABaseAI::GetUnitCharacter()
 	return UnitCharacter;
 }
 
-void ABaseAI::SetTargetActor(AActor* InActor)
-{
-	PrevTarget = TargetActor;
-	TargetActor = InActor;
-}
 
 void ABaseAI::CanPerformAct()
 {
@@ -43,10 +34,7 @@ void ABaseAI::CanPerformAct()
 
 void ABaseAI::AIMove(FVector InLocation)
 {
-
-	TargetActor = nullptr;
 	MoveToLocation(InLocation, 150.f);
-	CurrAction = EActionType::Move;
 }
 
 void ABaseAI::OnPossess(APawn* InPawn)
